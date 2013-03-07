@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Google cloud Messaging</string>
+    <string name="title_activity_ativa_gcm">Ativar/Desativar GCM</string>
+    <string name="title_activity_mostra_mensagem">Mensagem Recebida</string>
+
+</resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="br.com.hachitecnologia.gcm"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- GCM -->
+    <permission
+        android:name="br.com.hachitecnologia.gcm.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="br.com.hachitecnologia.gcm.permission.C2D_MESSAGE" />
+    <!-- Permite o recebimento de mensagens do GCM. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <!-- Permite a conexão com o serviço GCM. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- O GCM requer uma conta do Google para sua utilização. -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- Mantém o processador dormindo quando uma mensagem é recebida. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <receiver
+            android:name="com.google.android.gcm.GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="br.com.hachitecnologia.gcm" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="br.com.hachitecnologia.gcm.GCMIntentService" />
+
+        <activity
+            android:name="br.com.hachitecnologia.gcm.activity.AtivaGCMActivity"
+            android:label="@string/title_activity_ativa_gcm" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="br.com.hachitecnologia.gcm.activity.MostraMensagemActivity"
+            android:label="@string/title_activity_mostra_mensagem" >
+        </activity>
+    </application>
+
+</manifest>
